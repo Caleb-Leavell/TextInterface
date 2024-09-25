@@ -1,4 +1,4 @@
-package com.calebleavell.textinterface;
+package com.calebleavell.textinterface.Elements;
 
 import java.util.List;
 
@@ -19,13 +19,17 @@ public class Text extends Scene {
             else this.text = text;
     }
 
-    public void print() {
-        System.out.print(text);
-        super.print();
+    public String getText() {
+        return text;
     }
 
-    public void println() {
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    @Override
+    public void display() {
         System.out.println(text);
-        super.print();
+        super.display();
     }
 }

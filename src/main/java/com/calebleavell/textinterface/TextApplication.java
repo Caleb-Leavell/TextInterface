@@ -1,5 +1,8 @@
 package com.calebleavell.textinterface;
 
+import com.calebleavell.textinterface.Elements.Scene;
+import com.calebleavell.textinterface.Elements.Text;
+
 public class TextApplication {
     Scene root;
     
@@ -17,6 +20,6 @@ public class TextApplication {
     }
 
     public void run() {
-        root.println();
+        root.display();
     }
 }

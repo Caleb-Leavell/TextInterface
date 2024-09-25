@@ -12,6 +12,9 @@ public class Text extends Scene {
     public Text() {
         this(null, null, null, null);
     }
+    public Text(String text) {
+        this(text, null, null, null);
+    }
     public Text(String text, String name, List<Scene> children, final String ID) {
         super(name, children, ID);
 

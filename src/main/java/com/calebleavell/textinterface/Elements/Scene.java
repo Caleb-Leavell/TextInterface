@@ -56,6 +56,16 @@ public class Scene implements Displayable{
 
     @Override
     public void display() {
+        displayChildren();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if(other instanceof Scene) return (((Scene) other).getID() == ID);
+            else return false;
+    }
+
+    public void displayChildren() {
         for(Displayable child : children) {
             child.display();
         }

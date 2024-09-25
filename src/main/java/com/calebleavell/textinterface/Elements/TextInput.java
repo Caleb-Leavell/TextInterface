@@ -47,5 +47,7 @@ public class TextInput extends Scene implements Inputable<String>{
     public void display() {
         inputText.display();
         input = scnr.nextLine();
+
+        super.display();
     }
 }

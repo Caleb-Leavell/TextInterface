@@ -48,5 +48,7 @@ public class NumberedActionChooser extends Scene{
         }
     
         events.get(Integer.parseInt(userInput.getInput())).run();
+
+        super.display(); //TODO - the rest of these
     }
 }

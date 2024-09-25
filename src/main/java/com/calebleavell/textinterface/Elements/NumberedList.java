@@ -30,5 +30,7 @@ public class NumberedList extends Scene {
             System.out.print(i + ": ");
             listElements.get(i).display();
         }        
+
+        super.display();
     }
 }

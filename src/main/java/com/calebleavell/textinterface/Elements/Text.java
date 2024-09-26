@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Text extends Scene {
     private String text;
-
+    
     public Text() {
         this(null, null, null, null);
     }

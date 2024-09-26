@@ -1,6 +1,7 @@
 package com.calebleavell.textinterface;
 
 import com.calebleavell.textinterface.Elements.NumberedList;
+import com.calebleavell.textinterface.Elements.NumberedSceneChooser;
 import com.calebleavell.textinterface.Elements.NumberedActionChooser;
 import com.calebleavell.textinterface.Elements.TextInput;
 import com.calebleavell.textinterface.Elements.Text;
@@ -17,20 +18,13 @@ public final class App{
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
-        NumberedActionChooser myChoices = new NumberedActionChooser(
-            new NumberedList(new ArrayList<Text>(Arrays.asList(
-                new Text("Print hello"),
-                new Text("Print goodbye")
-            )), null, null, null), null, 
-            new ArrayList<Runnable>(Arrays.asList(
-                () -> {System.out.println("hello"); },
-                () -> {System.out.println("goodbye"); }
-        )), null, null, null, null);
+        NumberedSceneChooser myChooser = new NumberedSceneChooser(new ArrayList<Scene>(Arrays.asList(
+            new Text("scene 1", "Scene 1", null, null),
+            new Text("scene 2", "Scene 2", null, null),
+            new Text("scene 3", "Scene 3", null, null)
+        )), null, null, null);
 
-        Scene myScene1 = new Scene(null, null, "hello!");
-        Scene myScene2 = new Scene(null, null, "hello?");
-
-        System.out.println(myScene1.equals(myScene2));
+        myChooser.display();
 
     }
 

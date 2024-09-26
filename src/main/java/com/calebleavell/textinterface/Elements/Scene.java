@@ -35,7 +35,7 @@ public class Scene implements Displayable{
         if(children == null) this.children = new ArrayList<>();
             else this.children = children;
 
-        if (name == null) this.name = "[UNNAMED_TEXT]"; 
+        if (name == null) this.name = String.format("[Unnamed %s]", this.getClass().getSimpleName()); 
             else this.name = name;
 
     }

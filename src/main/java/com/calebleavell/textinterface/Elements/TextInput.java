@@ -14,7 +14,7 @@ public class TextInput extends Scene implements Inputable<String>{
     public static final String DEFAULT_INPUT_TEXT = "Input: ";
 
     public TextInput() {
-        this(new Text(), null, null, null);
+        this(new Text(DEFAULT_INPUT_TEXT), null, null, null);
     }
     public TextInput(Text inputText, String name, List<Scene> children, final String ID) {
         super(name, children, ID);

@@ -1,4 +1,4 @@
-package com.calebleavell.textinterface;
+package com.calebleavell.textinterface.deprecated;
 
 @FunctionalInterface
 public interface Inputable<T> {

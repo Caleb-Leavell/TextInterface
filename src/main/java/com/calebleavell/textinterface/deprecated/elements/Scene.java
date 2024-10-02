@@ -1,9 +1,9 @@
 
-package com.calebleavell.textinterface.Elements;
+package com.calebleavell.textinterface.deprecated.elements;
 
 import java.util.List;
 
-import com.calebleavell.textinterface.Displayable;
+import com.calebleavell.textinterface.deprecated.Displayable;
 
 import java.util.ArrayList;
 

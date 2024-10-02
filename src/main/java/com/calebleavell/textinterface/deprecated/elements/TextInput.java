@@ -1,9 +1,9 @@
-package com.calebleavell.textinterface.Elements;
+package com.calebleavell.textinterface.deprecated.elements;
 
 import java.util.List;
 import java.util.Scanner;
 
-import com.calebleavell.textinterface.Inputable;
+import com.calebleavell.textinterface.deprecated.Inputable;
 
 public class TextInput extends Scene implements Inputable<String>{
     private Text inputText;

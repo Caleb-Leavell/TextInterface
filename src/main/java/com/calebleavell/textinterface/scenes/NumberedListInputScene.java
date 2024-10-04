@@ -28,12 +28,12 @@ public class NumberedListInputScene extends GenericScene implements Inputtable<I
     }
 
     @Override
-    public void display() {
-        numberedList.display();
-        inputGetter.display();
+    public void run() {
+        numberedList.run();
+        inputGetter.run();
         input = Integer.parseInt(inputGetter.getInput());
 
-        super.display();
+        super.run();
     }
 
     public NumberedListInputScene(Builder builder) {

@@ -31,15 +31,15 @@ public class NumberedListScene extends GenericScene{
 
 
     @Override
-    public void display() {
+    public void run() {
         //TODO: input validation
         
         for(int i = 0; i < list.size(); i ++) {
             System.out.print((i + startIndex) + ": ");
-            list.get(i).display();
+            list.get(i).run();
         }
 
-        super.display();
+        super.run();
     }
 
     protected NumberedListScene(Builder builder) {

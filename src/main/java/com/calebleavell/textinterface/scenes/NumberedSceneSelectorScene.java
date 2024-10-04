@@ -11,10 +11,10 @@ public class NumberedSceneSelectorScene extends GenericScene{
      * NOTE: any child scenes will be displayed BEFORE the selected scene
      */
     @Override
-    public void display() {
-        selector.display();
-        super.display();
-        sceneList.get(selector.getInput()).display();
+    public void run() {
+        selector.run();
+        super.run();
+        sceneList.get(selector.getInput()).run();
     }
 
     public NumberedSceneSelectorScene(Builder builder) {

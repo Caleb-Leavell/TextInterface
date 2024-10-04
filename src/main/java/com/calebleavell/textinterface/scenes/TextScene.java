@@ -19,7 +19,7 @@ public class TextScene extends GenericScene {
     }
 
     @Override
-    public void display() {
+    public void run() {
         if(input == null) {
             System.out.print(text);
         } else {
@@ -28,7 +28,7 @@ public class TextScene extends GenericScene {
         if(endWithNewLine) {
             System.out.println();
         }
-        super.display();
+        super.run();
     }
 
     protected TextScene(Builder builder) {

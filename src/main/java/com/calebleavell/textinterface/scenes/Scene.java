@@ -1,8 +1,6 @@
 package com.calebleavell.textinterface.scenes;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 /**
  * A Scene is something that can be displayed to the terminal.
@@ -14,13 +12,7 @@ import java.util.function.Consumer;
  * 
  * The generic type is the type of Scene to require for the functions
  */
-public interface Scene<T extends Scene<T>> {
-    /**
-     * Displays its contents to the terminal
-     * In general, display should also run the functions
-     */
-    public void display();
-
+public interface Scene extends Runnable{
     /**
      * Getter for name
      * @return the current name of the scene
@@ -43,13 +35,13 @@ public interface Scene<T extends Scene<T>> {
      * Getter for children
      * @return the list of child scenes attatched to the scene
      */
-    public List<Scene<?>> getChildren();
+    public List<Scene> getChildren();
 
     /**
-     * Display child scenes in a way designed for the implementation
+     * Run child scenes in a way designed for the implementation
      * This could just be a linear display, a unique selection of children to display, or anything else
      */
-    public void displayChildren();    
+    public void runChildren();    
 
     /**
      * getter for functions
@@ -57,11 +49,30 @@ public interface Scene<T extends Scene<T>> {
      * In general, implementation will pass in "this" as the Scene
      * @return the list of functions it can execute
      */
-    public List<Consumer<Scene<T>>> getFunctions();
+    public List<Runnable> getFunctions();
 
     /**
      * Executes each function of the scene without displaying
      * To execute a specific function call getFunctions and get an element
      */
     public void executeFunctions();
+
+    /**
+     * Finds a child scene that matches name and returns it
+     * Does a depth first search
+     * Depending on development, there may be more than one child with the same name
+     * @param name The name of the scene to be found
+     * @return the first scene that matches name
+     */
+    public Scene getChildByName(String name);
+
+    /**
+     * Finds the child scene tha matches ID and returns it
+     * Does a depth first search
+     * Regardless of development, there will only be one child with the same ID (if any)
+     * @param ID the ID of the child
+     * @return the child with the given ID
+     */
+    public Scene getChildByID(long ID);
+
 }

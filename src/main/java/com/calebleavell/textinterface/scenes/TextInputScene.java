@@ -14,10 +14,10 @@ public class TextInputScene extends GenericScene implements Inputtable<String> {
     }
 
     @Override
-    public void display() {
-        displayText.display();
+    public void run() {
+        displayText.run();
         input = scnr.nextLine();
-        super.display();
+        super.run();
     }
 
     protected TextInputScene(Builder builder) {

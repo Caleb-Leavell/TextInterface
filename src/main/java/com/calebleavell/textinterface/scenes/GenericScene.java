@@ -3,25 +3,25 @@ package com.calebleavell.textinterface.scenes;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.function.Consumer;
 import com.calebleavell.textinterface.IDGenerator;
 
 /**
  * A simple, abstract implementation of the Scene interface
  */
-public abstract class GenericScene<T extends GenericScene<T>> implements Scene<T>{
+public abstract class GenericScene implements Scene{
     private final long id = IDGenerator.generateID();
 
     private String name;
-    private List<Scene<?>> children;
-    private List<Consumer<Scene<T>>> functions;
+    private List<Scene> children;
+    private List<Runnable> functions;
 
     /**
-     * Displays its contents to the terminal
+     * Executes its functions, then displays its children
      */
     @Override
-    public void display() {
-        displayChildren();
+    public void run() {
+        executeFunctions();
+        runChildren();
     }
 
     /**
@@ -56,7 +56,7 @@ public abstract class GenericScene<T extends GenericScene<T>> implements Scene<T
      * @return the list of child scenes attatched to the scene
      */
     @Override
-    public List<Scene<?>> getChildren() {
+    public List<Scene> getChildren() {
         return children;
     }
 
@@ -64,9 +64,9 @@ public abstract class GenericScene<T extends GenericScene<T>> implements Scene<T
      * Linearly displays Children
      */
     @Override
-    public void displayChildren() {
-        for(Scene<?> child : children) {
-            child.display();
+    public void runChildren() {
+        for(Scene child : children) {
+            child.run();
         }
     }
 
@@ -75,28 +75,63 @@ public abstract class GenericScene<T extends GenericScene<T>> implements Scene<T
      * @return the list of functions it can execute
      */
     @Override
-    public List<Consumer<Scene<T>>> getFunctions() {
+    public List<Runnable> getFunctions() {
         return functions;
     }
 
-    @Override
     /**
      * Linearlly executes the functions, passing in this
      */
+    @Override
     public void executeFunctions() {
-        for(Consumer<Scene<T>> function : functions) {
-            function.accept(this);
+        for(Runnable function : functions) {
+            function.run();
+            
         }
+    }
+
+    @Override
+    public Scene getChildByName(String name) {
+        for(Scene child : children) {
+            if(child.getName().equals(name)) {
+                return child;
+            } else {
+                Scene childSearch = child.getChildByName(name);
+                if(childSearch != null) {
+                    return childSearch;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public Scene getChildByID(long ID) {
+        for(Scene child : children) {
+            if(child.getID() == ID) {
+                return child;
+            } else {
+                Scene childSearch = child.getChildByID(ID);
+                if(childSearch != null) {
+                    return childSearch;
+                }
+            }
+        }
+
+        return null;
     }
 
     protected GenericScene(Builder<?> builder) {
         this.name = builder.name;
         this.children = builder.children;
+        this.functions = builder.functions;
     }
 
-    abstract static class Builder<B extends Builder<B>> {
+    public abstract static class Builder<B extends Builder<B>> {
         private String name = String.format("[Unnamed]");
         private List<Scene> children = new ArrayList<>(); 
+        private List<Runnable> functions = new ArrayList<>();
 
         @SuppressWarnings("unchecked")
         public B self() {
@@ -117,6 +152,12 @@ public abstract class GenericScene<T extends GenericScene<T>> implements Scene<T
             return self();
         }
 
-        abstract Scene build();
+        //varargs not allowed to avoid heap pollution
+        public B functions(Runnable... functions) {
+            this.functions = Arrays.asList(functions);
+            return self();
+        }
+
+        public abstract Scene build();
     }
 }

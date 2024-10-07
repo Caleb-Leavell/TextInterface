@@ -1,7 +1,8 @@
 package com.calebleavell.textinterface.scenes;
 
-import java.util.List;
-
+/**
+ * Presents a list of items to choose from, then the user picks an option based on the corresponding number
+ */
 public class NumberedListInputScene extends GenericScene implements Inputtable<Integer> {
     private NumberedListScene numberedList;
     private TextInputScene inputGetter;
@@ -28,7 +29,7 @@ public class NumberedListInputScene extends GenericScene implements Inputtable<I
     }
 
     @Override
-    public void run() {
+    public void run() throws Exception {
         numberedList.run();
         inputGetter.run();
         input = Integer.parseInt(inputGetter.getInput());

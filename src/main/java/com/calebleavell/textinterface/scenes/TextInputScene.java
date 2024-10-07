@@ -2,6 +2,9 @@ package com.calebleavell.textinterface.scenes;
 
 import java.util.Scanner;
 
+/**
+ * Gets text input from the user
+ */
 public class TextInputScene extends GenericScene implements Inputtable<String> {
     private TextScene displayText;
     private String input;
@@ -14,7 +17,7 @@ public class TextInputScene extends GenericScene implements Inputtable<String> {
     }
 
     @Override
-    public void run() {
+    public void run() throws Exception {
         displayText.run();
         input = scnr.nextLine();
         super.run();

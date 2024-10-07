@@ -1,7 +1,8 @@
 package com.calebleavell.textinterface.scenes;
 
-import java.util.List;
-
+/**
+ * Displays a piece of text
+ */
 public class TextScene extends GenericScene {
     private String text;
     private Inputtable<?> input;
@@ -19,7 +20,8 @@ public class TextScene extends GenericScene {
     }
 
     @Override
-    public void run() {
+    public void run() throws Exception {
+        executeFunctions();
         if(input == null) {
             System.out.print(text);
         } else {
@@ -47,6 +49,12 @@ public class TextScene extends GenericScene {
             this.text = text;
             return self();
         }
+        /**
+         * Allows easy translation from input to output
+         * Displays the direct input from another scene
+         * @param input Something that can return an input (with a good toString() method)
+         * @return the modified Builder
+         */
         public Builder text(Inputtable<?> input) {
             this.input = input;
             return self();

@@ -2,8 +2,10 @@ package com.calebleavell.textinterface.scenes;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
 
+/**
+ * Displays a Numbered list of TextScenes
+ */
 public class NumberedListScene extends GenericScene{
     private List<TextScene> list;
     private int startIndex;
@@ -31,7 +33,7 @@ public class NumberedListScene extends GenericScene{
 
 
     @Override
-    public void run() {
+    public void run() throws Exception {
         //TODO: input validation
         
         for(int i = 0; i < list.size(); i ++) {

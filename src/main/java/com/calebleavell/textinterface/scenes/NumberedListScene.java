@@ -6,37 +6,37 @@ import java.util.ArrayList;
 /**
  * Displays a Numbered list of TextScenes
  */
-public class NumberedListScene extends GenericScene{
+public class NumberedListScene extends GenericScene {
     private List<TextScene> list;
     private int startIndex;
 
     public List<TextScene> getList() {
         return list;
     }
+
     public void setList(List<TextScene> list) {
         this.list = list;
     }
+
     public int getStartIndex() {
         return startIndex;
     }
+
     public void setStartIndex(int startIndex) {
         this.startIndex = startIndex;
     }
 
-    static List<TextScene> convertStringListToTextSceneList(String...strings) {
+    static List<TextScene> convertStringListToTextSceneList(String... strings) {
         List<TextScene> list = new ArrayList<TextScene>();
-        for(String s : strings) {
+        for (String s : strings) {
             list.add(new TextScene.Builder().text(s).build());
         }
         return list;
     }
 
-
     @Override
     public void run() throws Exception {
-        //TODO: input validation
-        
-        for(int i = 0; i < list.size(); i ++) {
+        for (int i = 0; i < list.size(); i++) {
             System.out.print((i + startIndex) + ": ");
             list.get(i).run();
         }
@@ -59,11 +59,12 @@ public class NumberedListScene extends GenericScene{
             return self();
         }
 
-        //this generates an arraylist of TextScenes based on the inputted parameters
-        public Builder list(String...list) {
+        // this generates an arraylist of TextScenes based on the inputted parameters
+        public Builder list(String... list) {
             this.list = NumberedListScene.convertStringListToTextSceneList(list);
             return self();
         }
+
         public Builder startIndex(int startIndex) {
             this.startIndex = startIndex;
             return self();

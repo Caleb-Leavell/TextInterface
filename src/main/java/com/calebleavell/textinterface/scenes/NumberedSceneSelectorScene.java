@@ -8,15 +8,15 @@ import java.util.Arrays;
  * Utilizes a NumberedListInputScene to create a scene-selection mechanism
  * Much easier to construct than building a scene selector manually
  */
-public class NumberedSceneSelectorScene extends GenericScene{
+public class NumberedSceneSelectorScene extends GenericScene {
     private NumberedListInputScene selector;
     private List<Scene> sceneList;
 
     public void addScene(Scene newScene, String text) {
         sceneList.add(newScene);
         selector.getNumberedList().getList().add(new TextScene.Builder()
-            .text(text)
-            .build());
+                .text(text)
+                .build());
     }
 
     /**
@@ -34,7 +34,7 @@ public class NumberedSceneSelectorScene extends GenericScene{
     public String toString(int index, boolean displayChildren) {
         String output = super.toString(index, displayChildren);
 
-        for(Scene newScene : sceneList) {
+        for (Scene newScene : sceneList) {
             output = output + "\n" + newScene.toString(index + 1, false) + " >> scene choice";
         }
 
@@ -51,7 +51,6 @@ public class NumberedSceneSelectorScene extends GenericScene{
         private NumberedListInputScene selector = new NumberedListInputScene.Builder().build();
         private List<Scene> sceneList = new ArrayList<>();
 
-
         public Builder sceneList(List<Scene> sceneList) {
             this.sceneList = sceneList;
             generateSelector();
@@ -66,7 +65,7 @@ public class NumberedSceneSelectorScene extends GenericScene{
 
         public Builder listText(String... text) {
             List<TextScene> textList = selector.getNumberedList().getList();
-            for(int i = 0; i < text.length && i < textList.size(); i ++) {
+            for (int i = 0; i < text.length && i < textList.size(); i++) {
                 textList.get(i).setText(text[i]);
             }
             return self();
@@ -78,7 +77,7 @@ public class NumberedSceneSelectorScene extends GenericScene{
 
         private void generateSelector() {
             String[] nameList = new String[sceneList.size()];
-            for(int i = 0; i < sceneList.size(); i ++) {
+            for (int i = 0; i < sceneList.size(); i++) {
                 nameList[i] = sceneList.get(i).getName();
             }
             selector = new NumberedListInputScene.Builder().list(nameList).build();

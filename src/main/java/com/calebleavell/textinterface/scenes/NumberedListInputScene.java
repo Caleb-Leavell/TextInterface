@@ -1,7 +1,8 @@
 package com.calebleavell.textinterface.scenes;
 
 /**
- * Presents a list of items to choose from, then the user picks an option based on the corresponding number
+ * Presents a list of items to choose from, then the user picks an option based
+ * on the corresponding number
  */
 public class NumberedListInputScene extends GenericScene implements Inputtable<Integer> {
     private NumberedListScene numberedList;
@@ -11,14 +12,15 @@ public class NumberedListInputScene extends GenericScene implements Inputtable<I
     public NumberedListScene getNumberedList() {
         return numberedList;
     }
+
     public void setList(NumberedListScene numberedList) {
         this.numberedList = numberedList;
     }
-    
 
     public TextInputScene getInputGetter() {
         return inputGetter;
     }
+
     public void setInputGetter(TextInputScene inputGetter) {
         this.inputGetter = inputGetter;
     }
@@ -51,10 +53,12 @@ public class NumberedListInputScene extends GenericScene implements Inputtable<I
             this.numberedList = list;
             return self();
         }
-        public Builder list(String...list) {
+
+        public Builder list(String... list) {
             this.numberedList = new NumberedListScene.Builder().list(list).build();
             return self();
         }
+
         public Builder inputGetter(TextInputScene inputGetter) {
             this.inputGetter = inputGetter;
             return self();

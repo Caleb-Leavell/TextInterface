@@ -6,12 +6,16 @@ import java.util.Arrays;
 import com.calebleavell.textinterface.IDGenerator;
 
 /**
- * <p> A simple, abstract implementation of the Scene interface </p>
+ * <p>
+ * A simple, abstract implementation of the Scene interface
+ * </p>
  * 
- * <p> This class is easily extendable, but subclasses will be more difficult
- * (due to the way the Builder pattern is implented) </p>
+ * <p>
+ * This class is easily extendable, but subclasses will be more difficult
+ * (due to the way the Builder pattern is implented)
+ * </p>
  */
-public abstract class GenericScene implements Scene{
+public abstract class GenericScene implements Scene {
     private final long id = IDGenerator.generateID();
 
     private String name;
@@ -23,7 +27,7 @@ public abstract class GenericScene implements Scene{
      * Executes its functions, then displays its children
      */
     @Override
-    public void run() throws Exception{
+    public void run() throws Exception {
         this.terminated = false;
         executeFunctions();
         runChildren();
@@ -31,6 +35,7 @@ public abstract class GenericScene implements Scene{
 
     /**
      * Getter for name
+     * 
      * @return the current name of the scene
      */
     @Override
@@ -40,6 +45,7 @@ public abstract class GenericScene implements Scene{
 
     /**
      * Setter for name
+     * 
      * @param name - the new name fore the scene
      */
     @Override
@@ -49,6 +55,7 @@ public abstract class GenericScene implements Scene{
 
     /**
      * Getter for id
+     * 
      * @return the scene id - the id is a unique, immutable identifier
      */
     @Override
@@ -58,6 +65,7 @@ public abstract class GenericScene implements Scene{
 
     /**
      * Getter for children
+     * 
      * @return the list of child scenes attatched to the scene
      */
     @Override
@@ -67,14 +75,14 @@ public abstract class GenericScene implements Scene{
 
     /**
      * Setter for children
+     * 
      * @param children the new list of child scenes
      */
     @Override
     public void setChildren(List<Scene> children) {
         this.children = children;
     }
- 
-    
+
     @Override
     public void addChild(Scene child) {
         this.children.add(child);
@@ -85,16 +93,17 @@ public abstract class GenericScene implements Scene{
      */
     @Override
     public void runChildren() throws Exception {
-        for(Scene child : children) {
-            if(this.terminated) {
+        for (Scene child : children) {
+            if (this.terminated) {
                 return;
-            } 
+            }
             child.run();
         }
     }
 
     /**
      * Getter for functions
+     * 
      * @return the list of functions it can execute
      */
     @Override
@@ -107,29 +116,34 @@ public abstract class GenericScene implements Scene{
      */
     @Override
     public void executeFunctions() throws Exception {
-        for(Function function : functions) {
-            if(this.terminated) {
+        for (Function function : functions) {
+            if (this.terminated) {
                 return;
             }
             function.run();
-            
+
         }
     }
 
     /**
-     * <p> Executes a depth-first seach on the children </p>
-     * <p> Returns the first child with name matching param name </p>
+     * <p>
+     * Executes a depth-first seach on the children
+     * </p>
+     * <p>
+     * Returns the first child with name matching param name
+     * </p>
+     * 
      * @param name the name to search for
      * @return the first child that matches name
      */
     @Override
     public Scene getChildByName(String name) {
-        for(Scene child : children) {
-            if(child.getName().equals(name)) {
+        for (Scene child : children) {
+            if (child.getName().equals(name)) {
                 return child;
             } else {
                 Scene childSearch = child.getChildByName(name);
-                if(childSearch != null) {
+                if (childSearch != null) {
                     return childSearch;
                 }
             }
@@ -139,20 +153,27 @@ public abstract class GenericScene implements Scene{
     }
 
     /**
-     * <p> Executes a depth-first seach on the children </p>
-     * <p> Returns the first child with name matching param ID </p>
-     * <p> Unlike searching by name, there will only ever be up to one matching child </p>
+     * <p>
+     * Executes a depth-first seach on the children
+     * </p>
+     * <p>
+     * Returns the first child with name matching param ID
+     * </p>
+     * <p>
+     * Unlike searching by name, there will only ever be up to one matching child
+     * </p>
+     * 
      * @param ID the ID to search for
      * @return the first child that matches ID
      */
     @Override
     public Scene getChildByID(long ID) {
-        for(Scene child : children) {
-            if(child.getID() == ID) {
+        for (Scene child : children) {
+            if (child.getID() == ID) {
                 return child;
             } else {
                 Scene childSearch = child.getChildByID(ID);
-                if(childSearch != null) {
+                if (childSearch != null) {
                     return childSearch;
                 }
             }
@@ -170,8 +191,13 @@ public abstract class GenericScene implements Scene{
     }
 
     /**
-     * <p> Return whether or not the scene is in a termninated state </p>
-     * <p> note that the scene comes out of a termniated state when it is run again </p>
+     * <p>
+     * Return whether or not the scene is in a termninated state
+     * </p>
+     * <p>
+     * note that the scene comes out of a termniated state when it is run again
+     * </p>
+     * 
      * @return whether or not the scene is in a terminate state
      */
     @Override
@@ -181,6 +207,7 @@ public abstract class GenericScene implements Scene{
 
     /**
      * Recursively generates toString with info for this scene and all children
+     * 
      * @return formatted string
      */
     @Override
@@ -194,14 +221,14 @@ public abstract class GenericScene implements Scene{
     @Override
     public String toString(int indent, boolean displayChildren) {
         String output = "";
-        for(int i = 0; i < indent; i ++) {
+        for (int i = 0; i < indent; i++) {
             output += "\t";
         }
 
         output += this.name + " --- " + this.id;
 
-        if(displayChildren) {
-            for(Scene child : children) {
+        if (displayChildren) {
+            for (Scene child : children) {
                 output = output + "\n" + child.toString(indent + 1, true);
             }
         }
@@ -209,17 +236,16 @@ public abstract class GenericScene implements Scene{
         return output;
     }
 
-    
-     /**
-      * Takes a builder and extracts necessary fields out of it
-      * @param builder a GenericScene.Builder (or something that extends it)
-      */
+    /**
+     * Takes a builder and extracts necessary fields out of it
+     * 
+     * @param builder a GenericScene.Builder (or something that extends it)
+     */
     protected GenericScene(Builder<?> builder) {
         this.name = builder.name;
         this.children = builder.children;
         this.functions = builder.functions;
     }
-
 
     /**
      * Uses a Builder design pattern
@@ -228,7 +254,7 @@ public abstract class GenericScene implements Scene{
      */
     public abstract static class Builder<B extends Builder<B>> {
         private String name = String.format("[Unnamed]");
-        private List<Scene> children = new ArrayList<>(); 
+        private List<Scene> children = new ArrayList<>();
         private List<Function> functions = new ArrayList<>();
 
         @SuppressWarnings("unchecked")
@@ -245,12 +271,13 @@ public abstract class GenericScene implements Scene{
             this.children = children;
             return self();
         }
-        public B children(Scene...children) {
+
+        public B children(Scene... children) {
             this.children = Arrays.asList(children);
             return self();
         }
 
-        //varargs not allowed to avoid heap pollution
+        // varargs not allowed to avoid heap pollution
         public B functions(Function... functions) {
             this.functions = Arrays.asList(functions);
             return self();

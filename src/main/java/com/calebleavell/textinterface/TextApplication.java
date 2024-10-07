@@ -2,7 +2,7 @@ package com.calebleavell.textinterface;
 
 import com.calebleavell.textinterface.scenes.*;
 
-public class TextApplication extends GenericScene{
+public class TextApplication extends GenericScene {
     private Scene home;
 
     public Scene getHome() {

@@ -20,5 +20,5 @@ The core unit of the library is the Scene. All scenes are built up using a Build
 To make the design as modular as possible, it is recommended to utilize reflection to access scene methods inside functions.
 Note that this is option, and it is possible to do develop without reflection. Reflection simply improves the readability of the code.
 
-A [Demo Application]([url](https://github.com/Caleb-Leavell/TextInterface/blob/main/src/main/java/com/calebleavell/textinterface/DemoApp.java)) has been provided to show the recommended development style.
+A [Demo Application](https://github.com/Caleb-Leavell/TextInterface/blob/main/src/main/java/com/calebleavell/textinterface/DemoApp.java) has been provided to show the recommended development style.
 

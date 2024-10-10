@@ -12,4 +12,5 @@ public interface Inputtable<T> {
      * @return input of type T
      */
     public T getInput();
+
 }

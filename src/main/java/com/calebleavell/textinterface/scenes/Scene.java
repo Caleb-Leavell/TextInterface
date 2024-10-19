@@ -88,7 +88,7 @@ public interface Scene extends Function {
      * @param name The name of the scene to be found
      * @return the first scene that matches name
      */
-    public Scene getChildByName(String name);
+    public Scene getChild(String name);
 
     /**
      * Finds the child scene tha matches ID and returns it
@@ -99,7 +99,27 @@ public interface Scene extends Function {
      * @param ID the ID of the child
      * @return the child with the given ID
      */
-    public Scene getChildByID(long ID);
+    public Scene getChild(long ID);
+
+    /**
+     * Attempts to find a child scene that matches the name and type of Scene
+     * 
+     * @param <T> the desired type to find
+     * @param name the name of the class to find
+     * @param intendedClass the indended class of the child to find
+     * @return the found child, or null if no child is found
+     */
+    public <T extends Scene> T getChild(String name, Class<T> intendedClass);
+
+    /**
+     * Attempts to find a child scene that matches the ID and type of Scene
+     * 
+     * @param <T> the desired type to find
+     * @param ID the id of the class to find
+     * @param intendedClass the indended class of the child to find
+     * @return the found child, or null if no child is found
+     */
+    public <T extends Scene> T getChild(long ID, Class<T> intendedClass);
 
     /**
      * Allows for recursive tabbing of children for toString
@@ -119,5 +139,7 @@ public interface Scene extends Function {
      * returns whether or not a scene is currently terminated
      */
     public boolean isTerminated();
+
+    
 
 }

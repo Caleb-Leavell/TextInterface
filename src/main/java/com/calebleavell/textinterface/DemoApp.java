@@ -15,9 +15,16 @@ public final class DemoApp {
      */
     public static void main(String[] args) throws Exception {
 
+        //Create the app to house every scene
+        TextApplication app = new TextApplication.Builder().build();
+
         /**
-         * It is recommended that all scenes be placed inside a ContainerScene
-         * for improved modularity
+         * Having a ContainerScene as the base of the scene 
+         * leads to improved modularity
+         * 
+         * Also note that, since the Builder Design Patter is utilized,
+         * the developer has control over which fields to initialize
+         * and what order to initialize them in
          */
         ContainerScene randomNumberGenerator = new ContainerScene.Builder()
                 .name("random-number-generator")
@@ -25,57 +32,59 @@ public final class DemoApp {
                         //title
                         new TextScene.Builder()
                                 .text("\nRandom Number Generator\n")
-                                .name("random-number-generator-title").build(),
+                                .name("random-number-generator-title")
+                                .build(),
                         //get input
                         new TextInputScene.Builder()
                                 .displayText("Maximum Number (or -1 to quit): ")
-                                .name("random-number-generator-input").build(),
+                                .name("random-number-generator-input")
+                                .functions(
+                                        () -> {
+                                                /**
+                                                 * A reflective method is used to return the child in a non-polymorphic type
+                                                 * This allows for the calling of class-specific methods
+                                                 * 
+                                                 * Note
+                                                 */
+                                                TextInputScene input = app.getChild("random-number-generator-input", TextInputScene.class);
+                                                TextScene output = app.getChild("random-number-generator-output", TextScene.class);
+                                                   
+                                                //generate the random number
+                                                int max = Integer.parseInt(input.getInput());
+                                                int randomNumber = new java.util.Random().nextInt(max);
+                
+                                                //update the output to show the random number
+                                                output.setText("Generated Number: " + randomNumber);
+                                           
+                                        }
+                                )
+                                .build(),
                         //display output
                         new TextScene.Builder()
                                 .text("No number generated!") // default text
-                                .name("random-number-generator-output").build())
+                                .name("random-number-generator-output")
+                                .functions(
+                                        () -> {
+                                                /**
+                                                 * Note that a non-reflective version of the method is used here
+                                                 * This is technically more safe (although the reflective method is not unsafe, persay)
+                                                 * 
+                                                 * The reflective version is only necessary when we want to use class-specific methods
+                                                 */
+                                                Scene rngScene = app.getChild("random-number-generator");
+
+                                                //reruns the scene until the user terminates it
+                                                rngScene.run();
+                                        }
+                                )
+                                .build())
+
                 .build();
 
-        /**
-         * Add a function to the input,
-         * that updates the output to display the random number
-         */
-        randomNumberGenerator.getChildByName("random-number-generator-input").getFunctions().add(
-                () -> {
-                    Scene input = randomNumberGenerator.getChildByName("random-number-generator-input");
-                    Scene output = randomNumberGenerator.getChildByName("random-number-generator-output");
 
-                    /**
-                     * Reflection is used to call class-specific methods not provided by the Scene interface
-                     * 
-                     * Note that using methods not belonging to a class is not caught at compile-time
-                     * so it is important to ensure you are only using the proper methods
-                     * 
-                     * However, the benefit outweighs the cost as now this function is completely bound to the scene
-                     */
-                    Method getInput = input.getClass().getDeclaredMethod("getInput");
-                    Method setText = output.getClass().getDeclaredMethod("setText", String.class);
-
-                    Integer userInput = Integer.parseInt(getInput.invoke(input).toString());
-
-                    if (userInput < 0) {
-                        randomNumberGenerator.terminate();
-                        return;
-                    }
-
-                    int randomNumber = new java.util.Random().nextInt(userInput);
-                    setText.invoke(output, "Generated Number: " + randomNumber);
-                    output.run();
-                    randomNumberGenerator.run();
-                });
-
-        /**
-         * Technically, using the TextApplication class is not required
-         *
-         * However, it makes the code more readable and clear
-         */
-        TextApplication RNGApp = new TextApplication.Builder().home(randomNumberGenerator).build();
-        RNGApp.run();
+        //Set the home of the app and run
+        app.setHome(randomNumberGenerator);
+        app.run();
     }
 
 }

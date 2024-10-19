@@ -126,23 +126,20 @@ public abstract class GenericScene implements Scene {
     }
 
     /**
-     * <p>
      * Executes a depth-first seach on the children
-     * </p>
-     * <p>
+     * 
      * Returns the first child with name matching param name
-     * </p>
      * 
      * @param name the name to search for
      * @return the first child that matches name
      */
     @Override
-    public Scene getChildByName(String name) {
+    public Scene getChild(String name) {
         for (Scene child : children) {
             if (child.getName().equals(name)) {
                 return child;
             } else {
-                Scene childSearch = child.getChildByName(name);
+                Scene childSearch = child.getChild(name);
                 if (childSearch != null) {
                     return childSearch;
                 }
@@ -153,26 +150,22 @@ public abstract class GenericScene implements Scene {
     }
 
     /**
-     * <p>
      * Executes a depth-first seach on the children
-     * </p>
-     * <p>
+     * 
      * Returns the first child with name matching param ID
-     * </p>
-     * <p>
+     * 
      * Unlike searching by name, there will only ever be up to one matching child
-     * </p>
      * 
      * @param ID the ID to search for
      * @return the first child that matches ID
      */
     @Override
-    public Scene getChildByID(long ID) {
+    public Scene getChild(long ID) {
         for (Scene child : children) {
             if (child.getID() == ID) {
                 return child;
             } else {
-                Scene childSearch = child.getChildByID(ID);
+                Scene childSearch = child.getChild(ID);
                 if (childSearch != null) {
                     return childSearch;
                 }
@@ -181,6 +174,59 @@ public abstract class GenericScene implements Scene {
 
         return null;
     }
+
+    /**
+     * Attempts to find a child scene that matches the name and type of Scene
+     * Executes a depth-first search
+     * 
+     * @param <T> the desired type to find
+     * @param name the name of the class to find
+     * @param intendedClass the indended class of the child to find
+     * @return the found child, or null if no child is found
+     */
+    @Override
+    @SuppressWarnings("unchecked") //it's safe to suppress since it's checking that the class is the same before returning
+    public <T extends Scene> T getChild(String name, Class<T> intendedClass) {
+        for (Scene child : children) {
+            if (child.getName().equals(name) && child.getClass().equals(intendedClass)) {
+                return (T) child;
+            } else {
+                T childSearch = (T) child.getChild(name);
+                if (childSearch != null) {
+                    return childSearch;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Attempts to find a child scene that matches the ID and type of Scene
+     * Executes a depth-first search
+     * 
+     * @param <T> the desired type to find
+     * @param ID the id of the class to find
+     * @param intendedClass the indended class of the child to find
+     * @return the found child, or null if no child is found
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public <T extends Scene> T getChild(long ID, Class<T> intendedClass) {
+        for (Scene child : children) {
+            if (child.getID() == ID && child.getClass().equals(intendedClass)) {
+                return (T) child;
+            } else {
+                T childSearch = (T) child.getChild(name);
+                if (childSearch != null) {
+                    return childSearch;
+                }
+            }
+        }
+
+        return null;
+    }
+
 
     /**
      * Terminates scene execution
@@ -191,12 +237,9 @@ public abstract class GenericScene implements Scene {
     }
 
     /**
-     * <p>
      * Return whether or not the scene is in a termninated state
-     * </p>
-     * <p>
+     * 
      * note that the scene comes out of a termniated state when it is run again
-     * </p>
      * 
      * @return whether or not the scene is in a terminate state
      */

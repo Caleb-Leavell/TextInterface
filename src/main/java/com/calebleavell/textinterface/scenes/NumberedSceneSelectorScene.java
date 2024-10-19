@@ -21,7 +21,8 @@ public class NumberedSceneSelectorScene extends GenericScene {
 
     /**
      * display displays the selector, gets the input, then display the chosen scene
-     * NOTE: any child scenes will be displayed BEFORE the selected scene
+     * 
+     * NOTE: all child scenes and functions will be ran BEFORE the selected scene is displayed
      */
     @Override
     public void run() throws Exception {

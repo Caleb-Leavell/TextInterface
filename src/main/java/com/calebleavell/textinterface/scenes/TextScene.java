@@ -22,7 +22,6 @@ public class TextScene extends GenericScene {
 
     @Override
     public void run() throws Exception {
-        executeFunctions();
         if (input == null) {
             System.out.print(text);
         } else {

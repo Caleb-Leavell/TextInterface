@@ -25,7 +25,7 @@ This Demo Application implements a simple random number generator that continuou
 
 First, we create a new TextApplication. Here we see that the classes in this library utilize the Builder Design pattern. This gives the developer control over which fields
 to initialize, as well as what order to initialize them in. Here, we don't need to initialize any fields immediately. 
-We must also ensure that main throws Exception, as Scene functions also throw Exception
+We must also ensure that main throws Exception, as Scene functions also throw Exception.
 
 ```Java
 public static void main(String[] args) throws Exception {

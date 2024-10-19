@@ -112,7 +112,7 @@ Next, we will create the scene for the Random Number Generator. This can essenti
 Note that, if the app was larger scale, it may be a good idea to split this up into multiple different ContainerScenes and adding them as children to a home, as readability may decline with more than two layers of children.
 
 
-Finally, we add the scene as the home of the app and run
+Finally, we add the scene as the home of the app and run.
 
 ```Java
     //Set the home of the app and run

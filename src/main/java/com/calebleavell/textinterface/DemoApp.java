@@ -49,8 +49,24 @@ public final class DemoApp {
                                                 TextInputScene input = app.getChild("random-number-generator-input", TextInputScene.class);
                                                 TextScene output = app.getChild("random-number-generator-output", TextScene.class);
                                                    
+                                                /**
+                                                 * Note that a non-reflective version of the method is used here
+                                                 * This is technically more safe (although the reflective method is not unsafe, persay)
+                                                 * 
+                                                 * The reflective version is only necessary when we want to use class-specific methods
+                                                 */
+                                                Scene rngScene = app.getChild("random-number-generator");
+
                                                 //generate the random number
                                                 int max = Integer.parseInt(input.getInput());
+                                                
+                                                //terminate if max is negative
+                                                if(max <= 0) {
+                                                        rngScene.terminate();
+                                                        System.out.println("Exiting...");
+                                                        return;
+                                                }
+
                                                 int randomNumber = new java.util.Random().nextInt(max);
                 
                                                 //update the output to show the random number
@@ -65,12 +81,6 @@ public final class DemoApp {
                                 .name("random-number-generator-output")
                                 .functions(
                                         () -> {
-                                                /**
-                                                 * Note that a non-reflective version of the method is used here
-                                                 * This is technically more safe (although the reflective method is not unsafe, persay)
-                                                 * 
-                                                 * The reflective version is only necessary when we want to use class-specific methods
-                                                 */
                                                 Scene rngScene = app.getChild("random-number-generator");
 
                                                 //reruns the scene until the user terminates it

@@ -6,22 +6,55 @@ import java.util.Arrays;
 import com.calebleavell.textinterface.IDGenerator;
 
 /**
- * <p>
- * A simple, abstract implementation of the Scene interface
- * </p>
  * 
- * <p>
- * This class is easily extendable, but subclasses will be more difficult
- * (due to the way the Builder pattern is implented)
- * </p>
+ * <p> GenericScene Class </p>
+ * 
+ * <p> A simple, abstract implementation of the Scene interface </p>
+ * 
+ * <p> This class is easily extendable, but subclasses will be more difficult
+ * (due to the way the Builder pattern is implemented) </p>
+ * 
+ * @author Caleb Leavell
+
+ * @version 1.00 Initial Construction
+ * 
  */
 public abstract class GenericScene implements Scene {
+
+    /**
+     * The unique ID of the scene
+     */
     private final long id = IDGenerator.generateID();
 
+    /**
+     * The name of the scene
+     */
     private String name;
+
+    /**
+     * Every child scene contained within the scene
+     * 
+     */
     private List<Scene> children;
+
+    /**
+     * The list of functions to execute with the scene
+     */
     private List<Function> functions;
+
+    /**
+     * If false, it will run as normal
+     * 
+     * If true, it will stop executing its children. 
+     * 
+     * This is set to false in run()
+     */
     private boolean terminated = false;
+
+    /**
+     * The number of layers of children to add to the toString()
+     */
+    public static int MAX_ITERATIONS_ON_TOSTRING = 6;
 
     /**
      * Executes its functions, then displays its children
@@ -83,6 +116,9 @@ public abstract class GenericScene implements Scene {
         this.children = children;
     }
 
+    /**
+     * Add a child to the list of children
+     */
     @Override
     public void addChild(Scene child) {
         this.children.add(child);
@@ -250,6 +286,7 @@ public abstract class GenericScene implements Scene {
 
     /**
      * Recursively generates toString with info for this scene and all children
+     * Will only go as deep as MAX_ITERATIONS_ON_TOSTRING
      * 
      * @return formatted string
      */
@@ -263,6 +300,10 @@ public abstract class GenericScene implements Scene {
      */
     @Override
     public String toString(int indent, boolean displayChildren) {
+        if(indent > MAX_ITERATIONS_ON_TOSTRING) {
+            return "";
+        }
+        
         String output = "";
         for (int i = 0; i < indent; i++) {
             output += "\t";
@@ -296,36 +337,76 @@ public abstract class GenericScene implements Scene {
      * but extending any subclasses of this class will be difficult
      */
     public abstract static class Builder<B extends Builder<B>> {
+        /**
+         * Default name is "unnamed"
+         */
         private String name = String.format("[Unnamed]");
+
+        /**
+         * Default is an empty ArrayList
+         */
         private List<Scene> children = new ArrayList<>();
         private List<Function> functions = new ArrayList<>();
 
+        /**
+         * Return a version of this of type B
+         * 
+         * It is safe to suppress the warning on the user side,
+         * assuming subclasses are implemented correctly
+         * 
+         * @return this, casted to B
+         */
         @SuppressWarnings("unchecked")
         public B self() {
             return (B) this;
         }
 
+        /**
+         * Set the name field
+         * @param name The name of the Scene
+         * @return this, casted to B
+         */
         public B name(String name) {
             this.name = name;
             return self();
         }
 
+        /**
+         * Set the children field
+         * @param children The list of children
+         * @return this, casted to B
+         */
         public B children(List<Scene> children) {
             this.children = children;
             return self();
         }
 
+        /**
+         * Set the children field dynamically
+         * @param children The list of children
+         * @return this, casted to B
+         */
         public B children(Scene... children) {
             this.children = Arrays.asList(children);
             return self();
         }
 
-        // varargs not allowed to avoid heap pollution
+        /**
+         * Set the list of functions dynamically
+         * @param functions The list of functions
+         * @return this, casted to B
+         */
         public B functions(Function... functions) {
             this.functions = Arrays.asList(functions);
             return self();
         }
 
+        /**
+         * Initializes a new object of the class that the implementation
+         * is contained in 
+         * 
+         * @return A new Scene (or subclass of Scene) with the fields of the Builder
+         */
         public abstract Scene build();
     }
 }

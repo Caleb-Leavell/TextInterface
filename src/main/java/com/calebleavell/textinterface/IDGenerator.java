@@ -6,6 +6,9 @@ package com.calebleavell.textinterface;
  * as well (ID)
  */
 public class IDGenerator {
+    /**
+     * The current ID
+     */
     private static long idCounter = 0;
 
     /**

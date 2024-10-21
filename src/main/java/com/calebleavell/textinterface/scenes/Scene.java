@@ -3,12 +3,22 @@ package com.calebleavell.textinterface.scenes;
 import java.util.List;
 
 /**
- * A Scene is something that can be displayed to the terminal.
- * It has:
- * - a name
- * - a unique, immutable id
- * - a list of functions it can execute
- * - a list of child scenes
+ * 
+ * <p> Scene Interface </p>
+ * 
+ * <p>   A Scene is something that can be displayed to the terminal. </p>
+ * <p> It has: </p>
+ * 
+ * <ul>
+ *  <li> a name </li>
+ *  <li> a unique, immutable id </li>
+ *  <li> a list of functions it can execute </li>
+ *  <li> a list of child scenes </li>
+ * </ul>
+ * 
+ * @author Caleb Leavell
+
+ * @version 1.00 Initial Construction
  * 
  */
 public interface Scene extends Function {

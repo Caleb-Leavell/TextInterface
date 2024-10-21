@@ -43,8 +43,6 @@ public final class DemoApp {
                                                 /**
                                                  * A reflective method is used to return the child in a non-polymorphic type
                                                  * This allows for the calling of class-specific methods
-                                                 * 
-                                                 * Note
                                                  */
                                                 TextInputScene input = app.getChild("random-number-generator-input", TextInputScene.class);
                                                 TextScene output = app.getChild("random-number-generator-output", TextScene.class);

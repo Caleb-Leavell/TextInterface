@@ -270,6 +270,9 @@ public abstract class GenericScene implements Scene {
     @Override
     public void terminate() {
         this.terminated = true;
+        for(Scene child : children) {
+            child.terminate();
+        }
     }
 
     /**

@@ -27,7 +27,7 @@ public final class DemoApp {
 
                 //terminate if max is negative
                 if(max <= 0) {
-                        app.getChild("random-number-generator").terminate();
+                        app.terminate();
                         System.out.println("Exiting...");
                         return null;
                 }

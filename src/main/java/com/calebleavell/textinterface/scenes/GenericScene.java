@@ -397,7 +397,7 @@ public abstract class GenericScene implements Scene {
          * @return this, casted to B
          */
         public B functions(Function... functions) {
-            this.functions = Arrays.asList(functions);
+            this.functions = new ArrayList<>(Arrays.asList(functions));
             return self();
         }
 

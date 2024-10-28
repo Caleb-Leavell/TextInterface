@@ -1,5 +1,9 @@
 package com.calebleavell.textinterface.scenes;
 
+import java.util.function.BiConsumer;
+import java.util.List;
+import com.calebleavell.textinterface.InputListener;
+
 /**
  * 
  * <p> Inputtable Interface </p>
@@ -13,7 +17,6 @@ package com.calebleavell.textinterface.scenes;
  * @version 1.00 Initial Construction
  * 
  */
-@FunctionalInterface
 public interface Inputtable<T> {
     /**
      * Getter for the input collected from the user
@@ -21,5 +24,16 @@ public interface Inputtable<T> {
      * @return input of type T
      */
     public T getInput();
+
+
+    public List<InputListener<T>> getInputListeners();
+
+    /**
+     * Adds a listener that gets updated to match the users's input
+     */
+    public default void addInputListener(InputListener<T> listener) {
+        getInputListeners().add(listener);
+    }
+
 
 }

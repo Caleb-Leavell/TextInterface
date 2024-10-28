@@ -1,0 +1,192 @@
+==== CONFIGS ====		
+{
+    "base_path": "c:\\Users\\cjlea\\VSCodeProjects\\textinterface\\src\\main\\java\\com\\calebleavell\\textinterface",
+    "out": "c:\\Users\\cjlea\\VSCodeProjects\\textinterface\\src\\main\\java\\com\\calebleavell\\textinterface\\javadoc",
+    "javadoc_executable": "C:\\Program Files\\Java\\jdk-21\\bin\\javadoc.exe",
+    "exclude": [],
+    "raw_params": ""
+}
+
+==== COMMAND ====
+"C:\Program Files\Java\jdk-21\bin\javadoc.exe" 
+	-sourcepath "c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface" 
+	-d "c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc" 
+	"c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\DemoApp.java"
+	"c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\IDGenerator.java"
+	"c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\ContainerScene.java"
+	"c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\Function.java"
+	"c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\GenericScene.java"
+	"c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\Inputtable.java"
+	"c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedListInputScene.java"
+	"c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedListScene.java"
+	"c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedSceneSelectorScene.java"
+	"c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\Scene.java"
+	"c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\TextInputScene.java"
+	"c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\TextScene.java"
+	"c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\TextApplication.java"
+
+
+==== JAVADOC OUTPUT ====
+Loading source file c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\DemoApp.java...
+Loading source file c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\IDGenerator.java...
+Loading source file c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\ContainerScene.java...
+Loading source file c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\Function.java...
+Loading source file c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\GenericScene.java...
+Loading source file c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\Inputtable.java...
+Loading source file c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedListInputScene.java...
+Loading source file c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedListScene.java...
+Loading source file c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedSceneSelectorScene.java...
+Loading source file c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\Scene.java...
+Loading source file c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\TextInputScene.java...
+Loading source file c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\TextScene.java...
+Loading source file c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\TextApplication.java...
+Constructing Javadoc information...
+Creating destination directory: "c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\"
+Building index for all the packages and classes...
+Standard Doclet version 21.0.4+8-LTS-274
+Building tree for all the packages and classes...
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\GenericScene.java:339: warning: no @param for <B>
+    public abstract static class Builder<B extends Builder<B>> {
+                           ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\Inputtable.java:17: warning: no @param for <T>
+public interface Inputtable<T> {
+       ^
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\ContainerScene.html...
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\Function.java:18: warning: no description for @throws
+     * @throws Exception
+       ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\Scene.java:72: warning: no description for @throws
+     * @throws Exception
+       ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\Scene.java:89: warning: no description for @throws
+     * @throws Exception
+       ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\Scene.java:141: warning: no @param for displayChildren
+    public String toString(int indent, boolean displayChildren);
+                  ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\Scene.java:151: warning: no @return
+    public boolean isTerminated();
+                   ^
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\ContainerScene.Builder.html...
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\ContainerScene.java:28: warning: use of default constructor, which does not provide a comment
+    public static class Builder extends GenericScene.Builder<Builder> {
+                  ^
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\DemoApp.html...
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\DemoApp.java:14: warning: no main description
+     * @param args The arguments of the program.
+       ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\DemoApp.java:16: warning: no @throws for java.lang.Exception
+    public static void main(String[] args) throws Exception {
+                       ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\DemoApp.java:11: warning: use of default constructor, which does not provide a comment
+public final class DemoApp {
+             ^
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\Function.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\GenericScene.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\GenericScene.Builder.html...
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\GenericScene.java:339: warning: use of default constructor, which does not provide a comment
+    public abstract static class Builder<B extends Builder<B>> {
+                           ^
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\IDGenerator.html...
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\IDGenerator.java:15: warning: no main description
+     * @return a new, unique id
+       ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\IDGenerator.java:8: warning: use of default constructor, which does not provide a comment
+public class IDGenerator {
+       ^
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\Inputtable.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\NumberedListInputScene.html...
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedListInputScene.java:32: warning: no main description
+     * @return The NumberedList of options
+       ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedListInputScene.java:47: warning: no main description
+     * @return The input collector, not the input itself
+       ^
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\NumberedListInputScene.Builder.html...
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedListInputScene.java:106: warning: no main description
+         * @param list The list of options
+           ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedListInputScene.java:115: warning: no main description
+         * @param list The list of options (varargs)
+           ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedListInputScene.java:124: warning: no main description
+         * @param inputGetter The input collector
+           ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedListInputScene.java:97: warning: use of default constructor, which does not provide a comment
+    public static class Builder extends GenericScene.Builder<Builder> {
+                  ^
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\NumberedListScene.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\NumberedListScene.Builder.html...
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedListScene.java:123: warning: no main description
+         * @param list The list of TextScenes
+           ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedListScene.java:142: warning: no main description
+         * @param startIndex The starting index of the list
+           ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedListScene.java:111: warning: use of default constructor, which does not provide a comment
+    public static class Builder extends GenericScene.Builder<Builder> {
+                  ^
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\NumberedSceneSelectorScene.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\NumberedSceneSelectorScene.Builder.html...
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedSceneSelectorScene.java:103: warning: no main description
+         * @param sceneList The List of Scenes to choose from
+           ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedSceneSelectorScene.java:113: warning: no main description
+         * @param sceneList The List of Scenes to choose from (varargs)
+           ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedSceneSelectorScene.java:123: warning: no main description
+         * @param text The displayText of each option (varargs)
+           ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\NumberedSceneSelectorScene.java:91: warning: use of default constructor, which does not provide a comment
+    public static class Builder extends GenericScene.Builder<Builder> {
+                  ^
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\Scene.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\TextApplication.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\TextApplication.Builder.html...
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\TextApplication.java:68: warning: no main description
+         * @param home The first scene to run
+           ^
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\TextInputScene.html...
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\TextInputScene.java:54: warning: no description for @param
+     * @param builder
+       ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\TextInputScene.java:64: warning: no comment
+    public static class Builder extends GenericScene.Builder<Builder> {
+                  ^
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\TextInputScene.Builder.html...
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\TextInputScene.java:76: warning: no main description
+         * @param displayText The prompt text
+           ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\TextInputScene.java:85: warning: no main description
+         * @param displayText The prompt text
+           ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\TextInputScene.java:64: warning: use of default constructor, which does not provide a comment
+    public static class Builder extends GenericScene.Builder<Builder> {
+                  ^
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\TextScene.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\TextScene.Builder.html...
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\TextScene.java:97: warning: no main description
+         * @param text The text to display
+           ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\TextScene.java:118: warning: no main description
+         * @param endWithNewLine Whether or not to end with a new line
+           ^
+c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\scenes\TextScene.java:80: warning: use of default constructor, which does not provide a comment
+    public static class Builder extends GenericScene.Builder<Builder> {
+                  ^
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\package-summary.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\package-tree.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\package-summary.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\com\calebleavell\textinterface\scenes\package-tree.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\overview-tree.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\index.html...
+Building index for all classes...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\allclasses-index.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\allpackages-index.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\index-all.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\search.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\overview-summary.html...
+Generating c:\Users\cjlea\VSCodeProjects\textinterface\src\main\java\com\calebleavell\textinterface\javadoc\help-doc.html...
+36 warnings
+
+

@@ -120,6 +120,38 @@ public class NumberedSceneSelectorScene extends GenericScene {
         }
 
         /**
+         * Generates the sceneList based on the names of the scenes. 
+         * It finds the scenes based on searching for children in the parent param.
+         * 
+         * @param parent The scene containing the child scenes
+         * @param sceneNames The names of the child scenes
+         * @return self
+         */
+        public Builder sceneList(Scene parent, String... sceneNames) {
+            for(int i = 0; i < sceneNames.length; i ++) {
+                sceneList.add(parent.getChild(sceneNames[i]));
+            }
+
+            return self();
+        }
+
+        /**
+         * Generates the sceneList based on the IDs of the scenes. 
+         * It finds the scenes based on searching for children in the parent param.
+         * 
+         * @param parent The scene containing the child scenes
+         * @param sceneIDs The IDs of the child scenes
+         * @return self
+         */
+        public Builder sceneList(Scene parent, long... sceneIDs) {
+            for(int i = 0; i < sceneIDs.length; i ++) {
+                sceneList.add(parent.getChild(sceneIDs[i]));
+            }
+
+            return self();
+        }
+
+        /**
          * @param text The displayText of each option (varargs)
          * @return self
          */

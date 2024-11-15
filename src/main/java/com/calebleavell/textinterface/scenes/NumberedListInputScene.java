@@ -2,7 +2,7 @@ package com.calebleavell.textinterface.scenes;
 
 /**
  * 
- * <p> NumberedListInputScene </p>
+ * <p> NumberedListInputScene Class </p>
  * 
  * <p> Presents a list of items to choose from, then the user picks an option based
  * on the corresponding number </p>

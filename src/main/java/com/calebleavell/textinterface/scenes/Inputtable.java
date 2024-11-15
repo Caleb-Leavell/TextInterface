@@ -1,6 +1,5 @@
 package com.calebleavell.textinterface.scenes;
 
-import java.util.function.BiConsumer;
 import java.util.List;
 import com.calebleavell.textinterface.InputListener;
 
@@ -13,7 +12,8 @@ import com.calebleavell.textinterface.InputListener;
  * 
  * 
  * @author Caleb Leavell
-
+ * 
+ * @version 1.01 Add InputListener Functionality
  * @version 1.00 Initial Construction
  * 
  */
@@ -33,6 +33,15 @@ public interface Inputtable<T> {
      */
     public default void addInputListener(InputListener<T> listener) {
         getInputListeners().add(listener);
+    }
+
+    /**
+     * Runs through each listener and provides them with this object
+     */
+    public default void updateListeners() {
+        for(InputListener<T> listener : getInputListeners()) {
+            listener.update(this);
+        }
     }
 
 

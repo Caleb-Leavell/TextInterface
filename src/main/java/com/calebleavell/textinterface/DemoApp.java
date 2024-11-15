@@ -1,11 +1,6 @@
 package com.calebleavell.textinterface;
 
 import com.calebleavell.textinterface.scenes.*;
-import java.lang.reflect.Method;
-import java.util.function.Consumer;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * This is a simple random number generator. The user inputs the maximum number they want
@@ -22,8 +17,19 @@ public final class DemoApp {
         //Create the app to house every scene
         TextApplication app = new TextApplication.Builder().build();
 
-        InputListener<String> randomNumber = new InputListener<String>(i -> {
-                int max = Integer.parseInt(i);
+        /**
+         * Calculate the random number from the given input and store it in
+         * this variable
+         */
+        InputListener<String> randomNumber = new InputListener<String>(input -> {
+                int max;
+
+                try {
+                        max = Integer.parseInt(input);
+                }
+                catch(NumberFormatException e) {
+                        return "Error: Invalid Number!";
+                }
 
                 //terminate if max is negative
                 if(max <= 0) {
@@ -32,6 +38,7 @@ public final class DemoApp {
                         return null;
                 }
 
+                //get random number
                 Integer output = new java.util.Random().nextInt(max);      
                 
                 return "Generated Number: " + output.toString();
@@ -57,9 +64,7 @@ public final class DemoApp {
                         new TextInputScene.Builder()
                                 .displayText("Maximum Number (or -1 to quit): ")
                                 .name("random-number-generator-input")
-                                .listeners(new ArrayList<>(Arrays.asList(
-                                        randomNumber
-                                )))
+                                .addListener(randomNumber)
                                 .build(),
                         //display output
                         new TextScene.Builder()

@@ -47,7 +47,7 @@ public abstract class GenericInputScene<T> extends GenericScene implements Input
     /**
      * Builder Class for GenericInputScene
      */
-    public abstract static class Builder<T, B extends Builder<T, B>> extends GenericScene.Builder<Builder<T, B>> {
+    public abstract static class Builder<T, B extends Builder<T, B>> extends GenericScene.Builder<B> {
 
         /**
          * The list of inputListeners
@@ -76,15 +76,5 @@ public abstract class GenericInputScene<T> extends GenericScene implements Input
             return self();
         }
 
-        /**
-         * Redefinition here since the type params are different. 
-         * 
-         * For method details, see GenericScene.Builder.
-         */
-        @Override
-        @SuppressWarnings("unchecked")
-        public B self() {
-            return (B) this;
-        }
     }
 }

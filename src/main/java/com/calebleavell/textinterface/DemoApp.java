@@ -60,24 +60,40 @@ public final class DemoApp {
                                 .text("\nRandom Number Generator\n")
                                 .name("random-number-generator-title")
                                 .build(),
-                        //get input
+
+                        //Generate the random number
                         new TextInputScene.Builder()
-                                .displayText("Maximum Number (or -1 to quit): ")
+                                .displayText("\nMaximum Number (or -1 to quit): ")
                                 .name("random-number-generator-input")
                                 .addListener(randomNumber)
-                                .build(),
-                        //display output
-                        new TextScene.Builder()
-                                .text(randomNumber)
-                                .name("random-number-generator-output")
-                                .functions(
-                                        () -> {
-                                                Scene rngScene = app.getChild("random-number-generator");
-
-                                                //reruns the scene until the user terminates it
-                                                rngScene.run();
-                                        }
+                                /**
+                                 * These are added as children so that, whenever we jump 
+                                 * to the input, the output and
+                                 * selector are also run
+                                 */
+                                .children(
+                                //display output
+                                new TextScene.Builder()
+                                        .text(randomNumber)
+                                        .name("random-number-generator-output")
+                                        .children(
+                                                
+                                        )
+                                        .build(),
+                                //ask to exit or terminate
+                                new NumberedSceneSelectorScene.Builder()
+                                        .name("random-number-generator-selector")
+                                        .listText("Generate another number", "Exit")
+                                        .sceneList(app, "random-number-generator-input", "terminate")
+                                        .build()                                        
                                 )
+                                .build(),
+
+                        //terminate
+                        new TextScene.Builder()
+                                .name("terminate")
+                                .text("Exiting...")
+                                .functions(() -> app.terminate())
                                 .build())
 
                 .build();

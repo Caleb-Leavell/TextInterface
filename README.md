@@ -18,7 +18,13 @@ This library focuses on:
 The core unit of the library is the Scene. All scenes are built up using a Builder Design pattern. Every scene can also have child scenes, which are then attatched to the scene. Scenes can also have functions attatched to them.
 
 A [Demo Application](https://github.com/Caleb-Leavell/TextInterface/blob/main/src/main/java/com/calebleavell/textinterface/DemoApp.java) has been provided to show the recommended development style.
-This Demo Application implements a simple random number generator that continuously takes a maximum number from the user, then displays the generated number. We will run through it here.
+This Demo Application implements a simple random number generator that continuously takes a maximum number from the user, then displays the generated number.
+When run, the Demo App works as follows:
+
+![image](https://github.com/user-attachments/assets/098fda3e-3c05-4b27-8b6d-0b124ecfb720)
+
+This functionality, which includes gathering user input, generating the number, displaying the output, and choosing a scene, is all achieved in around 100 lines of code, while utilizing only 3 
+declared variables in the entire program.
 
 # v1.2
 This release add the following features:

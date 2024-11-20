@@ -128,7 +128,7 @@ public class NumberedListInputScene extends GenericInputScene<Integer> {
             this.inputGetter = inputGetter;
             return self();
         }
-
+        
         /**
          * Return a new instance of NumberedListScene with the specified fields
          */

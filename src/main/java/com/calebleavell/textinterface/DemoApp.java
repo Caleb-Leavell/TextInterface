@@ -8,7 +8,7 @@ import com.calebleavell.textinterface.scenes.*;
  * (and greather than 0)
  */
 public final class DemoApp {
-
+        
     /**
      * @param args The arguments of the program.
      */
@@ -76,9 +76,6 @@ public final class DemoApp {
                                 new TextScene.Builder()
                                         .text(randomNumber)
                                         .name("random-number-generator-output")
-                                        .children(
-                                                
-                                        )
                                         .build(),
                                 //ask to exit or terminate
                                 new NumberedSceneSelectorScene.Builder()
@@ -98,10 +95,8 @@ public final class DemoApp {
 
                 .build();
 
-
         //Set the home of the app and run
         app.setHome(randomNumberGenerator);
         app.run();
     }
-
 }

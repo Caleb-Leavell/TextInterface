@@ -29,9 +29,9 @@ declared variables in the entire program.
 # v1.2
 This release add the following features:
 
-Input Listeners: This is a similar concept to Event Handlers. Input Listeners get updated every time an Inputtable (or any scene that takes an input) and then updates itself to match or to do something specific based off of it.
-Runtime Scene Selection List Generation: the NumberedSceneSelectorScene class is enhanced with its Builder's sceneList method being overloaded to be able to take in scene names, which are converted into the actual list of scenes when the object is run.
-Recursive Termination: Terminating a scene also terminates its children, and their children, etc.
+- **Input Listeners**: This is a similar concept to Event Handlers. Input Listeners get updated every time an Inputtable (or any scene that takes an input) and then updates itself to match or to do something specific based off of it.
+- **Runtime Scene Selection List Generation**: the NumberedSceneSelectorScene class is enhanced with its Builder's sceneList method being overloaded to be able to take in scene names, which are converted into the actual list of scenes when the object is run.
+- **Recursive Termination**: Terminating a scene also terminates its children, and their children, etc.
 These features improve the ability to keep things attached to scenes and not having to rely on disjointed development. It also reduces the need for use of reflective methods, which improves safety.
 
 # v1.1

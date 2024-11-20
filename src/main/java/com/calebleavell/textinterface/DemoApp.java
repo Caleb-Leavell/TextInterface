@@ -1,7 +1,6 @@
 package com.calebleavell.textinterface;
 
 import com.calebleavell.textinterface.scenes.*;
-import java.lang.reflect.Method;
 
 /**
  * This is a simple random number generator. The user inputs the maximum number they want
@@ -19,6 +18,33 @@ public final class DemoApp {
         TextApplication app = new TextApplication.Builder().build();
 
         /**
+         * Calculate the random number from the given input and store it in
+         * this variable
+         */
+        InputListener<String> randomNumber = new InputListener<String>(input -> {
+                int max;
+
+                try {
+                        max = Integer.parseInt(input);
+                }
+                catch(NumberFormatException e) {
+                        return "Error: Invalid Number!";
+                }
+
+                //terminate if max is negative
+                if(max <= 0) {
+                        app.terminate();
+                        System.out.println("Exiting...");
+                        return null;
+                }
+
+                //get random number
+                Integer output = new java.util.Random().nextInt(max);      
+                
+                return "Generated Number: " + output.toString();
+        });
+
+        /**
          * Having a ContainerScene as the base of the scene 
          * leads to improved modularity
          * 
@@ -34,57 +60,40 @@ public final class DemoApp {
                                 .text("\nRandom Number Generator\n")
                                 .name("random-number-generator-title")
                                 .build(),
-                        //get input
+
+                        //Generate the random number
                         new TextInputScene.Builder()
-                                .displayText("Maximum Number (or -1 to quit): ")
+                                .displayText("\nMaximum Number (or -1 to quit): ")
                                 .name("random-number-generator-input")
-                                .functions(
-                                        () -> {
-                                                /**
-                                                 * A reflective method is used to return the child in a non-polymorphic type
-                                                 * This allows for the calling of class-specific methods
-                                                 */
-                                                TextInputScene input = app.getChild("random-number-generator-input", TextInputScene.class);
-                                                TextScene output = app.getChild("random-number-generator-output", TextScene.class);
-                                                   
-                                                /**
-                                                 * Note that a non-reflective version of the method is used here
-                                                 * This is technically more safe (although the reflective method is not unsafe, persay)
-                                                 * 
-                                                 * The reflective version is only necessary when we want to use class-specific methods
-                                                 */
-                                                Scene rngScene = app.getChild("random-number-generator");
-
-                                                //generate the random number
-                                                int max = Integer.parseInt(input.getInput());
+                                .addListener(randomNumber)
+                                /**
+                                 * These are added as children so that, whenever we jump 
+                                 * to the input, the output and
+                                 * selector are also run
+                                 */
+                                .children(
+                                //display output
+                                new TextScene.Builder()
+                                        .text(randomNumber)
+                                        .name("random-number-generator-output")
+                                        .children(
                                                 
-                                                //terminate if max is negative
-                                                if(max <= 0) {
-                                                        rngScene.terminate();
-                                                        System.out.println("Exiting...");
-                                                        return;
-                                                }
-
-                                                int randomNumber = new java.util.Random().nextInt(max);
-                
-                                                //update the output to show the random number
-                                                output.setText("Generated Number: " + randomNumber);
-                                           
-                                        }
+                                        )
+                                        .build(),
+                                //ask to exit or terminate
+                                new NumberedSceneSelectorScene.Builder()
+                                        .name("random-number-generator-selector")
+                                        .listText("Generate another number", "Exit")
+                                        .sceneList(app, "random-number-generator-input", "terminate")
+                                        .build()                                        
                                 )
                                 .build(),
-                        //display output
-                        new TextScene.Builder()
-                                .text("No number generated!") // default text
-                                .name("random-number-generator-output")
-                                .functions(
-                                        () -> {
-                                                Scene rngScene = app.getChild("random-number-generator");
 
-                                                //reruns the scene until the user terminates it
-                                                rngScene.run();
-                                        }
-                                )
+                        //terminate
+                        new TextScene.Builder()
+                                .name("terminate")
+                                .text("Exiting...")
+                                .functions(() -> app.terminate())
                                 .build())
 
                 .build();

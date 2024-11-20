@@ -123,6 +123,7 @@ public class TextScene extends GenericScene {
             return self();
         }
 
+
         /**
          * @return The new TextScene
          */

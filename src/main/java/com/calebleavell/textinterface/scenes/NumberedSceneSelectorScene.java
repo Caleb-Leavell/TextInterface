@@ -29,6 +29,13 @@ public class NumberedSceneSelectorScene extends GenericScene {
     private List<Scene> sceneList;
 
     /**
+     * The name of scenes to add at runtime
+     */
+    private List<String> runtimeScenes;
+
+    private Scene parent;
+
+    /**
      * Adds a new scene to choose from
      * @param newScene The new scene
      * @param text The display text of the option
@@ -44,15 +51,43 @@ public class NumberedSceneSelectorScene extends GenericScene {
     }
 
     /**
-     * display displays the selector, gets the input, then display the chosen scene
+     * handles runtime Scenes, displays the selector, gets the input, then display the chosen scene
      * 
      * NOTE: all child scenes and functions will be ran BEFORE the selected scene is displayed
      */
     @Override
     public void run() throws Exception {
+        findScenes();
+        populateSelector();
         selector.run();
         super.run();
         sceneList.get(selector.getInput() - selector.getNumberedList().getStartIndex()).run();
+    }
+
+    private void findScenes() {
+        for(String i : runtimeScenes) {
+            this.sceneList.add(this.parent.getChild(i));
+        }
+        runtimeScenes.clear();
+    }
+    /**
+     * Populate an incomplete scene list with list names
+     * Prune extra list items
+     * 
+     * Only include the same number of display text items in the selector 
+     * as there are scenes in the scene list.
+     */
+    private void populateSelector() {
+        //pouplate
+        for(int i = selector.getNumberedList().getList().size() ; i < sceneList.size(); i ++) {
+            selector.getNumberedList().addItem(sceneList.get(i).getName());
+        }
+
+        //prune
+        if(sceneList.size() < selector.getNumberedList().getList().size()) {
+            selector.getNumberedList().setList(
+                new ArrayList<>(selector.getNumberedList().getList().subList(0, sceneList.size())));
+        }
     }
 
     /**
@@ -83,6 +118,8 @@ public class NumberedSceneSelectorScene extends GenericScene {
         super(builder);
         this.selector = builder.selector;
         this.sceneList = builder.sceneList;
+        this.runtimeScenes = builder.runtimeScenes;
+        this.parent = builder.parent;
     }
 
     /**
@@ -93,6 +130,9 @@ public class NumberedSceneSelectorScene extends GenericScene {
          * Input defaults to class-default
          */
         private NumberedListInputScene selector = new NumberedListInputScene.Builder().build();
+        
+        Scene parent = null;
+        List<String> runtimeScenes = new ArrayList<>();
 
         /**
          * Defaults to an ArrayList
@@ -105,7 +145,6 @@ public class NumberedSceneSelectorScene extends GenericScene {
          */
         public Builder sceneList(List<Scene> sceneList) {
             this.sceneList = sceneList;
-            generateSelector();
             return self();
         }
 
@@ -115,7 +154,37 @@ public class NumberedSceneSelectorScene extends GenericScene {
          */
         public Builder sceneList(Scene... sceneList) {
             this.sceneList = Arrays.asList(sceneList);
-            generateSelector();
+            return self();
+        }
+
+        /**
+         * Generates the sceneList (at runtime) based on the names of the scenes. 
+         * It finds the scenes based on searching for children in the parent param.
+         * 
+         * @param parent The scene containing the child scenes
+         * @param sceneNames The names of the child scenes
+         * @return self
+         */
+        public Builder sceneList(Scene parent, String... sceneNames) {
+            this.parent = parent;
+            this.runtimeScenes = new ArrayList<>(Arrays.asList(sceneNames));
+
+            return self();
+        }
+
+        /**
+         * Generates the sceneList based on the IDs of the scenes. 
+         * It finds the scenes based on searching for children in the parent param.
+         * 
+         * @param parent The scene containing the child scenes
+         * @param sceneIDs The IDs of the child scenes
+         * @return self
+         */
+        public Builder sceneList(Scene parent, long... sceneIDs) {
+            for(int i = 0; i < sceneIDs.length; i ++) {
+                sceneList.add(parent.getChild(sceneIDs[i]));
+            }
+
             return self();
         }
 
@@ -124,11 +193,7 @@ public class NumberedSceneSelectorScene extends GenericScene {
          * @return self
          */
         public Builder listText(String... text) {
-            List<TextScene> textList = selector.getNumberedList().getList();
-            //update the textList to match display text
-            for (int i = 0; i < text.length && i < textList.size(); i++) {
-                textList.get(i).setText(text[i]);
-            }
+            selector.setList(new NumberedListScene.Builder().list(text).build());
             return self();
         }
 
@@ -139,20 +204,5 @@ public class NumberedSceneSelectorScene extends GenericScene {
             return new NumberedSceneSelectorScene(self());
         }
 
-        /**
-         * Convert the inputted list of scenes into the NumberedListSelector
-         * 
-         * By default, the displayText is the name of each scene
-         */
-        private void generateSelector() {
-            //collect names
-            String[] nameList = new String[sceneList.size()];
-            for (int i = 0; i < sceneList.size(); i++) {
-                nameList[i] = sceneList.get(i).getName();
-            }
-
-            //generate selector
-            selector = new NumberedListInputScene.Builder().list(nameList).build();
-        }
     }
 }

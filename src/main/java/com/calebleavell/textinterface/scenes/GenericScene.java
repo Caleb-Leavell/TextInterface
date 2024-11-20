@@ -12,7 +12,8 @@ import com.calebleavell.textinterface.IDGenerator;
  * <p> A simple, abstract implementation of the Scene interface </p>
  * 
  * <p> This class is easily extendable, but subclasses will be more difficult
- * (due to the way the Builder pattern is implemented) </p>
+ * (due to the way the Builder pattern is implemented). For an example of the recommended
+ * way to extend subclasses, see GenericInputScene </p>
  * 
  * @author Caleb Leavell
 
@@ -43,7 +44,7 @@ public abstract class GenericScene implements Scene {
     private List<Function> functions;
 
     /**
-     * If false, it will run as normal
+     * If false, it will run as normal. 
      * 
      * If true, it will stop executing its children. 
      * 
@@ -162,7 +163,7 @@ public abstract class GenericScene implements Scene {
     }
 
     /**
-     * Executes a depth-first seach on the children
+     * Executes a depth-first seach on the children. 
      * 
      * Returns the first child with name matching param name
      * 
@@ -186,9 +187,9 @@ public abstract class GenericScene implements Scene {
     }
 
     /**
-     * Executes a depth-first seach on the children
+     * Executes a depth-first seach on the children. 
      * 
-     * Returns the first child with name matching param ID
+     * Returns the first child with name matching param ID. 
      * 
      * Unlike searching by name, there will only ever be up to one matching child
      * 
@@ -212,7 +213,7 @@ public abstract class GenericScene implements Scene {
     }
 
     /**
-     * Attempts to find a child scene that matches the name and type of Scene
+     * Attempts to find a child scene that matches the name and type of Scene. 
      * Executes a depth-first search
      * 
      * @param <T> the desired type to find
@@ -238,7 +239,7 @@ public abstract class GenericScene implements Scene {
     }
 
     /**
-     * Attempts to find a child scene that matches the ID and type of Scene
+     * Attempts to find a child scene that matches the ID and type of Scene. 
      * Executes a depth-first search
      * 
      * @param <T> the desired type to find
@@ -270,12 +271,15 @@ public abstract class GenericScene implements Scene {
     @Override
     public void terminate() {
         this.terminated = true;
+        for(Scene child : children) {
+            child.terminate();
+        }
     }
 
     /**
-     * Return whether or not the scene is in a termninated state
+     * Return whether or not the scene is in a termninated state. 
      * 
-     * note that the scene comes out of a termniated state when it is run again
+     * Note that the scene comes out of a termniated state when it is run again
      * 
      * @return whether or not the scene is in a terminate state
      */
@@ -285,7 +289,7 @@ public abstract class GenericScene implements Scene {
     }
 
     /**
-     * Recursively generates toString with info for this scene and all children
+     * Recursively generates toString with info for this scene and all children. 
      * Will only go as deep as MAX_ITERATIONS_ON_TOSTRING
      * 
      * @return formatted string
@@ -332,8 +336,8 @@ public abstract class GenericScene implements Scene {
     }
 
     /**
-     * Uses a Builder design pattern
-     * Extending this class makes extending this Builder easy,
+     * Uses a Builder design pattern. 
+     * Extending this class makes extending this Builder easy, 
      * but extending any subclasses of this class will be difficult
      */
     public abstract static class Builder<B extends Builder<B>> {
@@ -349,9 +353,9 @@ public abstract class GenericScene implements Scene {
         private List<Function> functions = new ArrayList<>();
 
         /**
-         * Return a version of this of type B
+         * Return a version of this of type B. 
          * 
-         * It is safe to suppress the warning on the user side,
+         * It is safe to suppress the warning on the user side, 
          * assuming subclasses are implemented correctly
          * 
          * @return this, casted to B
@@ -397,7 +401,7 @@ public abstract class GenericScene implements Scene {
          * @return this, casted to B
          */
         public B functions(Function... functions) {
-            this.functions = Arrays.asList(functions);
+            this.functions = new ArrayList<>(Arrays.asList(functions));
             return self();
         }
 

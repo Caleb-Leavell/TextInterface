@@ -2,7 +2,7 @@ package com.calebleavell.textinterface.scenes;
 
 /**
  * 
- * <p> NumberedListInputScene </p>
+ * <p> NumberedListInputScene Class </p>
  * 
  * <p> Presents a list of items to choose from, then the user picks an option based
  * on the corresponding number </p>
@@ -12,7 +12,7 @@ package com.calebleavell.textinterface.scenes;
  * @version 1.00 Initial Construction
  * 
  */
-public class NumberedListInputScene extends GenericScene implements Inputtable<Integer> {
+public class NumberedListInputScene extends GenericInputScene<Integer> {
     /**
      * The list of options
      */
@@ -94,7 +94,7 @@ public class NumberedListInputScene extends GenericScene implements Inputtable<I
     /**
      * The Builder class
      */
-    public static class Builder extends GenericScene.Builder<Builder> {
+    public static class Builder extends GenericInputScene.Builder<Integer, Builder> {
 
         /**
          * It defaults to the class-specified default for NumberedListScene and TextInputScene

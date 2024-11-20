@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @version 1.00 Initial Construction
  * 
  */
-public class TextInputScene extends GenericScene implements Inputtable<String> {
+public class TextInputScene extends GenericInputScene<String> {
 
     /**
      * Display Prompt (eg. "Input: ")
@@ -61,7 +61,7 @@ public class TextInputScene extends GenericScene implements Inputtable<String> {
     /*
      * Builder Class
      */
-    public static class Builder extends GenericScene.Builder<Builder> {
+    public static class Builder extends GenericInputScene.Builder<String, Builder> {
         /**
          * Default displayText is "Your Input: "
          * By default, it doesn't end with a new line

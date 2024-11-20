@@ -64,6 +64,10 @@ public class NumberedListScene extends GenericScene {
         this.startIndex = startIndex;
     }
 
+    public void addItem(String item) {
+        list.add(new TextScene.Builder().text(item).build());
+    }
+
     /**
      * Converts an array of strings to a List of TextScenes
      * @param strings The array of strings (varargs)

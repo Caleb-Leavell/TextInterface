@@ -15,6 +15,8 @@ This library focuses on:
 - Improving the readability and maintainability of the codebase by providing a clean, modular approach to building text interfacces
 - Allowing developers to design the way that is best suited for their system
 
+View the [Javadoc](https://caleb-leavell.github.io/TextInterface/javadoc/index.html)
+
 The core unit of the library is the Scene. All scenes are built up using a Builder Design pattern. Every scene can also have child scenes, which are then attatched to the scene. Scenes can also have functions attatched to them.
 
 A [Demo Application](https://github.com/Caleb-Leavell/TextInterface/blob/main/src/main/java/com/calebleavell/textinterface/DemoApp.java) has been provided to show the recommended development style.

@@ -1,5 +1,7 @@
 # Text Interface
 
+**Note:** This library is deprecated. Please see [Jatui](https://github.com/Caleb-Leavell/Jatui) for the current version.
+
 While GUIs are the most popular form of User Interface, there are many applications that are better suited for running purely in the terminal in a text-based format.
 Possible reasons for this are:
 - The program is simple and doesn't require a GUI
